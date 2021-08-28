@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Background from './images/bg-intro-desktop.png';
+import { Grid, useMediaQuery, makeStyles} from '@material-ui/core'
+import Text from './components/Text_left'
+import Form from './components/Form/Form'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundImage: `url(${Background})`,
+        height: '100vh',
+        backgroundRepeat: 'no-repeat',
+		backgroundSize: 'cover',
+		backgroundPosition: 'center',
+        backgroundColor: 'hsl(0, 100%, 74%)' 
+    }
+
+  }))
+
+export default function App() {
+    const classes = useStyles();
+    const isMobile = useMediaQuery('(max-width:375px)');
+    return (
+        <Grid container className={classes.root}>
+             <Grid item xs={isMobile ? 12 : 6}>
+                    <Text />
+                </Grid>
+                <Grid item xs={isMobile ? 12 : 6}>
+                    <Form />
+                </Grid>
+            
+        </Grid> 
+    );
 }
 
-export default App;
