@@ -1,10 +1,11 @@
 import { Grid, Typography, useMediaQuery, makeStyles, Button, SvgIcon, InputAdornment } from '@material-ui/core'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useState } from 'react';
-import { AYUDAS, ERRORES } from '../Texts/Texts'
+import { AYUDAS, ERRORES } from '../Texts/Texts';
 import { ButtonForm } from './Button';
 //import IconError from '../../images/icon-error.svg'
 import ErrorIcon from '@material-ui/icons/Error';
+
 
 
 
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0px 8px rgba(0, 0, 0, .1)',
     },
     margin: {
-        marginTop: theme.spacing(4),
+        marginTop: theme.spacing(3),
         display: 'flex',
         flexDirection: 'column',
         boxShadow: '0px 2px rgba(0, 0, 0, .1)',
@@ -42,9 +43,30 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '10%',
         marginRight: '20%',
     },
-    text: {
-        fontFamily: 'Poppins'
+    buttonForm: {
+        //marginTop: theme.spacing(1),
+        minHeight: '6vh',
+        backgroundColor: 'hsl(154, 59%, 51%)', 
+        boxShadow: '0px 8px rgba(0, 0, 0, .03)',
+        '&:hover': {
+            backgroundColor: 'hsl(154, 59%, 51%)',
+            boxShadow: 'none',
+          },
+    },
+    textNegrita: {
+        fontWeight: 'bold',
+    },
+    link: {
+        color: 'hsl(0, 100%, 74%)',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+    textGrey: {
+        color: 'grey',
+        fontSize: 14
     }
+    
 }));
 
 
@@ -81,7 +103,7 @@ export default function Form() {
             <Grid item xs={12}>
                 <Grid item xs={10} sm={10} >
                     <ButtonForm className={classes.button} 
-                        texto={<Typography><span>Try it free 7 days</span> theen $20/mo. thereafter</Typography>}
+                        texto={<Typography> <span className={classes.textNegrita}>Try it free 7 days</span> theen $20/mo. thereafter</Typography>}
                         style={{ textTransform: "none" }}
                     />
                 </Grid>
@@ -94,10 +116,11 @@ export default function Form() {
                                 variant="outlined"
                                 id="firstName"
                                 label="First Name"
-                                name="firstName"
+                                //name="firstName"
                                 value={informacionDelUsuario.firstName}
                                 fullWidth
                                 onChange={handleChange}
+                                hover=''
                                 validators={['required']}
                                 errorMessages={[ERRORES.firstName]}
                                 InputProps={{
@@ -116,7 +139,7 @@ export default function Form() {
                                 variant="outlined"
                                 id="lastName"
                                 label="Last Name"
-                                name="lastName"
+                                //name="lastName"
                                 onChange={handleChange}
                                 fullWidth
                                 value={informacionDelUsuario.lastName}
@@ -138,7 +161,7 @@ export default function Form() {
                                 variant="outlined"
                                 id="emailUsuario"
                                 label="Email Address"
-                                name="email"
+                                //name="email"
                                 onChange={handleChange}
                                 fullWidth
                                 value={informacionDelUsuario.email}
@@ -160,7 +183,7 @@ export default function Form() {
                                 variant="outlined"
                                 id="passwordUsuario"
                                 label="Password"
-                                name="password"
+                                //name="password"
                                 type="password"
                                 fullWidth
                                 onChange={handleChange}
@@ -177,13 +200,16 @@ export default function Form() {
                             />
                         </Grid>
                         <Grid item xs={10} sm={10} className={classes.margin}>
-                            <ButtonForm
-                                texto="probando" />
+                            <ButtonForm className={classes.buttonForm} style={{
+
+  }}
+                                texto="CLAIM FOR YOUR FREE TRIAL" />
                         </Grid>
                         <Grid >
-                            <Typography style={{ marginTop: 30 }} >
-                                By clicking button, you are agreeing to our Terms and services
+                            <Typography style={{ marginTop: 30 }} className={classes.textGrey}>
+                                By clicking button, you are agreeing to our {<a href={'wwdfnjv'} className={classes.link}>Terms and Services</a> }
                             </Typography>
+                         
                         </Grid>
                     </Grid>
                 </Grid>
@@ -194,6 +220,4 @@ export default function Form() {
             </Grid>
 
     );
-
-
 }
