@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
-        backgroundColor: 'hsl(0, 100%, 74%)'
+        backgroundColor: 'hsl(0, 100%, 74%)',
     }
 
   }))
